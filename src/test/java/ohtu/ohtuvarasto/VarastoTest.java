@@ -65,4 +65,64 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void negatiivinenTilavuusKonstruktorilleNollataan() {
+        Varasto v = new Varasto(-1);
+        assertEquals(0, v.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenAlkuSaldoKonstruktorilleNollataan() {
+        Varasto v = new Varasto(-1, -1);
+        assertEquals(0, v.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void alkuSaldoSuurempiKuinTilavuusKonstruktorille() {
+        double saldo = 2;
+        double tilavuus = 1;
+        Varasto v = new Varasto(tilavuus, saldo);
+        assertEquals(tilavuus, v.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void alkuSaldoPienempiKuinTilavuusKonstruktorille() {
+        Varasto v = new Varasto(2, 1);
+        assertEquals(1, v.getSaldo(), vertailuTarkkuus);
+        assertEquals(2, v.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenLisäysEiMuutaSaldoa() {
+        double vanhaSaldo = varasto.getSaldo();
+        varasto.lisaaVarastoon(-1);
+        assertEquals(vanhaSaldo, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void tilavuudenYlittäväLisäysTasapäistetään() {
+        varasto.lisaaVarastoon(20);
+        assertEquals(varasto.getTilavuus(), varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenOttoEiMuutaSaldoa() {
+        double vanhaSaldo = varasto.getSaldo();
+        varasto.otaVarastosta(-1);
+        assertEquals(vanhaSaldo, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void otaSuurempiMääräKuinSaldo() {
+        double vanhaSaldo = varasto.getSaldo();
+        double otto = varasto.otaVarastosta(200);
+        assertEquals(vanhaSaldo, otto, vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void tarkistaToString() {
+        assertEquals("saldo = 0.0, vielä tilaa 10.0", varasto.toString());
+    }
+
 }
