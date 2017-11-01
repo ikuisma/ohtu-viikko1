@@ -6,3 +6,6 @@ build/
 
 # Ignore .idea for IntelliJ IDEA
 .idea/
+
+# Ignore gradle directory. 
+/.gradle/
