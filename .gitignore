@@ -9,3 +9,10 @@ build/
 
 # Ignore gradle directory. 
 .gradle/
+
+# Ignore NetBeans gradle directory. 
+.nb-gradle/
+
+# Ignore .iml files from IntelliJ
+*.iml
+
