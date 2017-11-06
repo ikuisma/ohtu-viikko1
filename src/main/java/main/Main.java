@@ -56,5 +56,21 @@ public class Main {
         saatiin = mehua.otaVarastosta(-32.9);
         System.out.println("saatiin " + saatiin);
         System.out.println("Mehuvarasto: " + mehua);
-    }
+
+        // Nested for loops to break the style check.
+        for (int i=0; i<=1; i++) {
+          for (int j=0; j<=1; j++){
+            System.out.println(i + j);
+          }
+        }
+
+        // Nested if's to break the style check. 
+        if (true) {
+          if (true) {
+            if (true) {
+                System.out.print("I am inside three if's! ");
+            }
+          }
+        }
+      }
 }
