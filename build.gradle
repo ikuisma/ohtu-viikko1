@@ -37,6 +37,10 @@ jar {
     }
 }
 
+checkstyle {
+    sourceSets = [project.sourceSets.main]
+}
+
 jacocoTestReport {
     reports {
         xml.enabled true
